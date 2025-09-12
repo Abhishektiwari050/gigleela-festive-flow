@@ -66,11 +66,11 @@ const FeaturesSection = () => {
         <div className="text-center mb-16 animate-slide-up">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
             Why Choose
-            <span className="text-festival-gradient"> Rangmanch</span>
+            <span className="text-festival-gradient"> Sanskritiq</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            We make booking performing artists simple, secure, and delightful. 
-            Discover amazing talent for your next celebration.
+            We connect you with authentic Indian heritage through verified master artists. 
+            Experience the richness of our cultural traditions.
           </p>
         </div>
 

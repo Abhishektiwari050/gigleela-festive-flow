@@ -1,92 +1,122 @@
 import { Button } from "@/components/ui/button";
-import { Play, Search, Star } from "lucide-react";
+import { Play, Search, Star, Sparkles, Users, Calendar } from "lucide-react";
 import heroImage from "@/assets/hero-festival.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden gradient-subtle">
-      {/* Background Image with Overlay */}
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Animated Background */}
       <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-accent/10 to-primary-glow/5 animate-pulse"></div>
         <img
           src={heroImage}
-          alt="Festival celebration with traditional Indian performing artists"
-          className="w-full h-full object-cover opacity-20"
+          alt="Heritage celebration with traditional Indian performing artists showcasing cultural diversity"
+          className="w-full h-full object-cover opacity-30"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/80 to-background/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/70 to-background/90" />
       </div>
 
-      {/* Floating Elements */}
+      {/* Enhanced Floating Elements */}
       <div className="absolute top-20 left-10 animate-float">
-        <div className="w-3 h-3 rounded-full bg-primary opacity-60"></div>
+        <div className="w-4 h-4 rounded-full bg-gradient-festival opacity-70 animate-sparkle"></div>
       </div>
       <div className="absolute top-32 right-20 animate-float" style={{ animationDelay: '1s' }}>
-        <div className="w-2 h-2 rounded-full bg-accent opacity-80"></div>
+        <Sparkles className="h-8 w-8 text-primary-glow animate-sparkle" />
       </div>
-      <div className="absolute bottom-32 left-20 animate-sparkle">
-        <Star className="h-6 w-6 text-primary-glow" />
+      <div className="absolute bottom-32 left-20 animate-float" style={{ animationDelay: '2s' }}>
+        <Star className="h-6 w-6 text-accent animate-sparkle" />
+      </div>
+      <div className="absolute top-1/4 left-1/4 animate-float" style={{ animationDelay: '1.5s' }}>
+        <div className="w-2 h-2 rounded-full bg-primary opacity-60"></div>
+      </div>
+      <div className="absolute bottom-1/4 right-1/4 animate-float" style={{ animationDelay: '0.5s' }}>
+        <div className="w-3 h-3 rounded-full bg-accent/60 animate-sparkle"></div>
       </div>
 
       {/* Hero Content */}
       <div className="relative z-10 container mx-auto px-4 text-center animate-slide-up">
-        <div className="max-w-4xl mx-auto">
-          {/* Badge */}
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
-            <span className="text-sm font-medium text-primary">🎭 India's Premier Talent Marketplace</span>
+        <div className="max-w-5xl mx-auto">
+          {/* Enhanced Badge */}
+          <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-festival/10 border-2 border-primary/30 mb-8 animate-sparkle">
+            <Sparkles className="w-4 h-4 text-primary mr-2" />
+            <span className="text-sm font-semibold text-primary">🇮🇳 Celebrating India's Rich Cultural Heritage</span>
           </div>
 
-          {/* Main Heading */}
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight">
-            Discover Amazing
-            <span className="block text-festival-gradient animate-sparkle">
-              Performing Artists
+          {/* Enhanced Main Heading */}
+          <h1 className="text-5xl sm:text-6xl lg:text-8xl font-bold mb-8 leading-tight">
+            <span className="block mb-2">Discover India's</span>
+            <span className="block text-festival-gradient animate-sparkle text-6xl sm:text-7xl lg:text-9xl">
+              Cultural Treasures
+            </span>
+            <span className="block text-3xl sm:text-4xl lg:text-5xl mt-4 font-medium text-muted-foreground">
+              One Artist at a Time
             </span>
           </h1>
 
-          {/* Subtitle */}
-          <p className="text-lg sm:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-            Connect with talented singers, dancers, musicians, and performers for your special events. 
-            From weddings to festivals, find the perfect artist in minutes.
+          {/* Enhanced Subtitle */}
+          <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed">
+            Connect with master artists preserving ancient traditions. From classical ragas to folk dances, 
+            <span className="text-primary font-medium"> experience authentic Indian performing arts</span> for your most cherished celebrations.
           </p>
 
-          {/* Stats */}
-          <div className="flex flex-wrap justify-center items-center gap-8 mb-10 text-sm">
-            <div className="flex items-center space-x-2">
-              <div className="w-2 h-2 rounded-full bg-primary"></div>
-              <span className="text-muted-foreground">2000+ Verified Artists</span>
+          {/* Enhanced Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12 max-w-3xl mx-auto">
+            <div className="text-center p-4 rounded-lg bg-card/50 border border-border/50 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+              <Users className="h-6 w-6 text-primary mx-auto mb-2" />
+              <div className="text-2xl font-bold text-festival-gradient">2000+</div>
+              <div className="text-sm text-muted-foreground">Master Artists</div>
             </div>
-            <div className="flex items-center space-x-2">
-              <div className="w-2 h-2 rounded-full bg-accent"></div>
-              <span className="text-muted-foreground">500+ Events Monthly</span>
+            <div className="text-center p-4 rounded-lg bg-card/50 border border-border/50 animate-slide-up" style={{ animationDelay: '0.4s' }}>
+              <Calendar className="h-6 w-6 text-accent mx-auto mb-2" />
+              <div className="text-2xl font-bold text-festival-gradient">500+</div>
+              <div className="text-sm text-muted-foreground">Events Monthly</div>
             </div>
-            <div className="flex items-center space-x-2">
-              <div className="w-2 h-2 rounded-full bg-primary-glow"></div>
-              <span className="text-muted-foreground">All Major Cities</span>
+            <div className="text-center p-4 rounded-lg bg-card/50 border border-border/50 animate-slide-up" style={{ animationDelay: '0.6s' }}>
+              <Star className="h-6 w-6 text-primary-glow mx-auto mb-2" />
+              <div className="text-2xl font-bold text-festival-gradient">4.9★</div>
+              <div className="text-sm text-muted-foreground">Average Rating</div>
+            </div>
+            <div className="text-center p-4 rounded-lg bg-card/50 border border-border/50 animate-slide-up" style={{ animationDelay: '0.8s' }}>
+              <Sparkles className="h-6 w-6 text-accent mx-auto mb-2" />
+              <div className="text-2xl font-bold text-festival-gradient">50+</div>
+              <div className="text-sm text-muted-foreground">Art Forms</div>
             </div>
           </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button size="xl" variant="hero" className="min-w-[200px]">
-              <Search className="mr-2 h-5 w-5" />
-              Find Artists
+          {/* Enhanced CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
+            <Button size="xl" variant="hero" className="min-w-[240px] text-lg font-semibold animate-float">
+              <Search className="mr-3 h-6 w-6" />
+              Explore Heritage Artists
             </Button>
-            <Button size="xl" variant="outline" className="min-w-[200px] group">
-              <Play className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
-              Watch Demo
+            <Button size="xl" variant="outline" className="min-w-[240px] text-lg font-semibold group border-2">
+              <Play className="mr-3 h-6 w-6 group-hover:scale-125 transition-transform duration-300" />
+              Watch Cultural Stories
             </Button>
           </div>
 
-          {/* Trust Indicators */}
-          <div className="mt-12 text-center">
-            <p className="text-sm text-muted-foreground mb-4">Trusted by event organizers across India</p>
-            <div className="flex flex-wrap justify-center items-center gap-6 opacity-60">
-              <span className="text-xs font-medium">Wedding Planners</span>
-              <div className="w-1 h-1 bg-border rounded-full"></div>
-              <span className="text-xs font-medium">Corporate Events</span>
-              <div className="w-1 h-1 bg-border rounded-full"></div>
-              <span className="text-xs font-medium">Festival Organizers</span>
-              <div className="w-1 h-1 bg-border rounded-full"></div>
-              <span className="text-xs font-medium">Cultural Centers</span>
+          {/* Enhanced Trust Indicators */}
+          <div className="text-center animate-slide-up" style={{ animationDelay: '1s' }}>
+            <p className="text-sm font-medium text-muted-foreground mb-6">
+              Trusted by cultural enthusiasts and event organizers across India
+            </p>
+            <div className="flex flex-wrap justify-center items-center gap-8 text-xs font-medium text-muted-foreground/80">
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+                <span>Wedding Celebrations</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 rounded-full bg-accent animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+                <span>Festival Events</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 rounded-full bg-primary-glow animate-pulse" style={{ animationDelay: '1s' }}></div>
+                <span>Corporate Gatherings</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 rounded-full bg-accent animate-pulse" style={{ animationDelay: '1.5s' }}></div>
+                <span>Cultural Centers</span>
+              </div>
             </div>
           </div>
         </div>

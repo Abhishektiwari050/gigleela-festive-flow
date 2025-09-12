@@ -20,13 +20,16 @@ const Footer = () => {
             <div className="space-y-4">
               <div className="flex items-center space-x-2">
                 <div className="h-8 w-8 rounded-full bg-gradient-festival flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">R</span>
+                  <span className="text-white font-bold text-sm">S</span>
                 </div>
-                <span className="text-xl font-bold text-festival-gradient">Rangmanch</span>
+                <div>
+                  <span className="text-xl font-bold text-festival-gradient">Sanskritiq</span>
+                  <p className="text-xs text-muted-foreground -mt-1">Connecting Heritage</p>
+                </div>
               </div>
               <p className="text-muted-foreground text-sm leading-relaxed">
-                India's premier digital marketplace connecting talented performing artists 
-                with event organizers across the country.
+                India's premier digital marketplace connecting master performing artists 
+                with cultural enthusiasts across the country.
               </p>
               <div className="flex space-x-2">
                 <Button size="icon" variant="ghost" className="hover:text-primary">
@@ -94,7 +97,7 @@ const Footer = () => {
               <div className="space-y-3">
                 <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                   <Mail className="h-4 w-4 text-primary" />
-                  <span>hello@rangmanch.in</span>
+                  <span>hello@sanskritiq.in</span>
                 </div>
                 <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                   <Phone className="h-4 w-4 text-primary" />
@@ -145,7 +148,7 @@ const Footer = () => {
               </a>
             </div>
             <p className="text-sm text-muted-foreground">
-              © 2024 Rangmanch. All rights reserved.
+              © 2024 Sanskritiq. All rights reserved.
             </p>
           </div>
         </div>

@@ -83,12 +83,12 @@ const ArtistsShowcase = () => {
         {/* Section Header */}
         <div className="text-center mb-16 animate-slide-up">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
-            Featured
+            Heritage
             <span className="text-festival-gradient"> Artists</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Discover talented performers ready to make your event unforgettable. 
-            From classical to contemporary, find artists across all genres.
+            Discover master performers preserving India's rich cultural traditions. 
+            From classical ragas to folk dances, connect with authentic artistry.
           </p>
         </div>
 
