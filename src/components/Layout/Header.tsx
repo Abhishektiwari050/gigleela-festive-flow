@@ -18,12 +18,8 @@ import {
 const Header = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
-  const handleNavigation = (section: string) => {
-    // Scroll to section or navigate
-    const element = document.getElementById(section);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+  const handleNavigation = (path: string) => {
+    window.location.href = path;
   };
 
   return (
@@ -53,25 +49,25 @@ const Header = () => {
         {/* Navigation - Desktop */}
         <nav className="hidden lg:flex items-center space-x-8">
           <button 
-            onClick={() => handleNavigation('services')}
+            onClick={() => handleNavigation('/services')}
             className="text-foreground hover:text-primary transition-colors font-medium"
           >
             Services
           </button>
           <button 
-            onClick={() => handleNavigation('artists')}
+            onClick={() => handleNavigation('/artists')}
             className="text-foreground hover:text-primary transition-colors font-medium"
           >
             Artists
           </button>
           <button 
-            onClick={() => handleNavigation('about')}
+            onClick={() => handleNavigation('/about')}
             className="text-foreground hover:text-primary transition-colors font-medium"
           >
             About Us
           </button>
           <button 
-            onClick={() => handleNavigation('contact')}
+            onClick={() => handleNavigation('/contact')}
             className="text-foreground hover:text-primary transition-colors font-medium"
           >
             Contact
