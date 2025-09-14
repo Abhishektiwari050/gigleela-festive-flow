@@ -292,3 +292,11 @@ const Artists = () => {
 };
 
 export default Artists;
+
+
+const handleAddFavorite = (artistId: string) => {
+  toast({ title: "Added to favorites!", description: `Artist ${artistId} added.` });
+  // Add favorite logic here
+};
+
+<Button onClick={() => handleAddFavorite(artist.id)}>Add to Favorites</Button>

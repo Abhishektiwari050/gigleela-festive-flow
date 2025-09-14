@@ -158,3 +158,15 @@ const Footer = () => {
 };
 
 export default Footer;
+
+              <div className="h-8 w-8 rounded-full bg-gradient-festival flex items-center justify-center">
+                {/* Sanskritiq Heritage Logo SVG */}
+                <svg 
+                  viewBox="0 0 48 48" 
+                  className="h-6 w-6 text-white"
+                  fill="currentColor"
+                >
+                  <circle cx="24" cy="24" r="22" stroke="#C19A6B" strokeWidth="4" fill="#F5F0E6" />
+                  <path d="M24 12c4 0 7 3 7 7s-3 7-7 7-7-3-7-7 3-7 7-7zm0 14c6.627 0 12 2.686 12 6v4H12v-4c0-3.314 5.373-6 12-6z" fill="#C19A6B" />
+                </svg>
+              </div>

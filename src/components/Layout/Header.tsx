@@ -2,117 +2,233 @@ import { Button } from "@/components/ui/button";
 import { 
   Search, 
   Menu, 
+  X,
   Heart, 
   ChevronDown,
   Users,
-  UserPlus
+  UserPlus,
+  Share2,
+  Bell
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useNavigate, useLocation } from "react-router-dom";
+import { cn } from "@/lib/utils";
 
 const Header = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setHasScrolled(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleNavigation = (path: string) => {
-    window.location.href = path;
+    navigate(path);
+    setIsMobileMenuOpen(false);
+    setIsSearchOpen(false);
+  };
+
+  const handleSearch = () => {
+    if (searchQuery.trim()) {
+      navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+      setIsSearchOpen(false);
+      setSearchQuery("");
+    }
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: 'Sanskritiq - Connecting Heritage',
+          text: 'Discover authentic Indian cultural performances and services',
+          url: window.location.href,
+        });
+      } catch (error) {
+        console.log('Sharing cancelled');
+      }
+    } else {
+      navigator.clipboard.writeText(window.location.href);
+      alert('Link copied to clipboard!');
+    }
+  };
+
+  const navItems = [
+    { path: '/services', label: 'Services' },
+    { path: '/artists', label: 'Artists' },
+    { path: '/about', label: 'About Us' },
+    { path: '/contact', label: 'Contact' }
+  ];
+
+  const handleHomeNavigation = () => {
+    navigate('/');
+    setIsMobileMenuOpen(false);
+    setIsSearchOpen(false);
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className={cn(
+      "sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 transition-all duration-300",
+      hasScrolled ? "shadow-lg border-border/50" : "border-transparent"
+    )}>
       <div className="container flex h-16 items-center justify-between">
         {/* Logo */}
         <div className="flex items-center space-x-3">
-          <div className="flex items-center space-x-3">
-            {/* Swastik Logo */}
-            <div className="h-10 w-10 rounded-lg bg-gradient-festival flex items-center justify-center transform hover:rotate-12 transition-transform duration-300">
+          <div 
+            className="flex items-center space-x-3 cursor-pointer group"
+            onClick={handleHomeNavigation}
+            role="button"
+            tabIndex={0}
+            onKeyPress={(e) => e.key === 'Enter' && handleHomeNavigation()}
+          >
+            <div className="h-10 w-10 rounded-lg bg-gradient-festival flex items-center justify-center transform group-hover:rotate-12 transition-all duration-500 festival-glow">
+              {/* Sanskritiq Heritage Logo SVG */}
               <svg 
-                viewBox="0 0 24 24" 
-                className="h-6 w-6 text-white"
+                viewBox="0 0 48 48" 
+                className="h-8 w-8 text-white"
                 fill="currentColor"
               >
-                <path d="M12 2v10h10v2H14v8h-2v-8H2v-2h10V2h2z"/>
-                <path d="M14 2h8v2h-8zM2 12h8v2H2zM14 20h8v2h-8zM2 2h8v2H2z"/>
+                <circle cx="24" cy="24" r="22" stroke="#C19A6B" strokeWidth="4" fill="#F5F0E6" />
+                <path d="M24 12c4 0 7 3 7 7s-3 7-7 7-7-3-7-7 3-7 7-7zm0 14c6.627 0 12 2.686 12 6v4H12v-4c0-3.314 5.373-6 12-6z" fill="#C19A6B" />
               </svg>
             </div>
             <div>
-              <h1 className="text-xl font-bold text-festival-gradient">Sanskritiq</h1>
+              <h1 className="text-xl font-bold text-festival-gradient bg-clip-text">
+                Sanskritiq
+              </h1>
               <p className="text-xs text-muted-foreground -mt-1">Connecting Heritage</p>
             </div>
           </div>
         </div>
 
         {/* Navigation - Desktop */}
-        <nav className="hidden lg:flex items-center space-x-8">
-          <button 
-            onClick={() => handleNavigation('/services')}
-            className="text-foreground hover:text-primary transition-colors font-medium"
-          >
-            Services
-          </button>
-          <button 
-            onClick={() => handleNavigation('/artists')}
-            className="text-foreground hover:text-primary transition-colors font-medium"
-          >
-            Artists
-          </button>
-          <button 
-            onClick={() => handleNavigation('/about')}
-            className="text-foreground hover:text-primary transition-colors font-medium"
-          >
-            About Us
-          </button>
-          <button 
-            onClick={() => handleNavigation('/contact')}
-            className="text-foreground hover:text-primary transition-colors font-medium"
-          >
-            Contact
-          </button>
+        <nav className="hidden lg:flex items-center space-x-6">
+          {navItems.map((item) => (
+            <button
+              key={item.path}
+              onClick={() => handleNavigation(item.path)}
+              className={cn(
+                "text-foreground hover:text-primary transition-all duration-300 font-medium px-3 py-2 rounded-lg",
+                location.pathname === item.path 
+                  ? "text-primary bg-primary/10" 
+                  : "hover:bg-accent/50"
+              )}
+              aria-current={location.pathname === item.path ? "page" : undefined}
+            >
+              {item.label}
+            </button>
+          ))}
         </nav>
 
         {/* Action Buttons */}
         <div className="flex items-center space-x-2">
+          {/* Search Button */}
           <Button 
             variant="ghost" 
             size="icon" 
-            className="hidden sm:flex"
+            className="hidden sm:flex hover:bg-primary/10"
             onClick={() => setIsSearchOpen(!isSearchOpen)}
           >
             <Search className="h-4 w-4" />
           </Button>
-          <Button variant="ghost" size="icon" className="hidden sm:flex">
+
+          {/* Notifications */}
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="hidden sm:flex hover:bg-primary/10"
+            onClick={() => navigate('/notifications')}
+          >
+            <Bell className="h-4 w-4" />
+          </Button>
+
+          {/* Share */}
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="hidden sm:flex hover:bg-primary/10"
+            onClick={handleShare}
+          >
+            <Share2 className="h-4 w-4" />
+          </Button>
+
+          {/* Favorites */}
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="hidden sm:flex hover:bg-primary/10"
+            onClick={() => navigate('/favorites')}
+          >
             <Heart className="h-4 w-4" />
           </Button>
           
           {/* Join Dropdown */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm" className="hidden sm:flex">
+              <Button 
+                variant="outline" 
+                size="sm" 
+                className="hidden sm:flex festival-glow hover:scale-105"
+              >
                 Join Now
                 <ChevronDown className="h-4 w-4 ml-1" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-48">
-              <DropdownMenuItem>
+              <DropdownMenuItem 
+                className="cursor-pointer"
+                onClick={() => navigate('/join-artist')}
+              >
                 <UserPlus className="h-4 w-4 mr-2" />
                 Join as Artist
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem 
+                className="cursor-pointer"
+                onClick={() => navigate('/join-client')}
+              >
                 <Users className="h-4 w-4 mr-2" />
                 Join as Client
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
 
-          <Button variant="festival" size="sm" className="hidden sm:flex">
+          <Button 
+            variant="festival" 
+            size="sm" 
+            className="hidden sm:flex hover:shadow-glow"
+            onClick={() => navigate('/signin')}
+          >
             Sign In
           </Button>
-          <Button variant="ghost" size="icon" className="lg:hidden">
-            <Menu className="h-4 w-4" />
+
+          {/* Mobile Menu Button */}
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="lg:hidden"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </Button>
         </div>
       </div>
@@ -126,19 +242,56 @@ const Header = () => {
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <input
                   type="text"
-                  placeholder="Search for artists, services, or events..."
-                  className="w-full pl-10 pr-4 py-2 border border-input rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-ring"
+                  placeholder="Search artists, services, or cultural events..."
+                  className="w-full pl-10 pr-4 py-3 border border-input rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-ring focus:border-primary transition-all duration-300"
                   autoFocus
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onKeyPress={handleKeyPress}
                 />
               </div>
               <Button 
                 variant="ghost" 
                 size="sm"
                 onClick={() => setIsSearchOpen(false)}
+                className="hover:bg-destructive/10 hover:text-destructive"
               >
                 Cancel
               </Button>
+              <Button 
+                variant="default" 
+                size="sm"
+                onClick={handleSearch}
+                disabled={!searchQuery.trim()}
+              >
+                Search
+              </Button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div className="lg:hidden absolute top-full left-0 right-0 bg-background border-b border-border animate-slide-up">
+          <div className="container py-4">
+            <nav className="space-y-2">
+              {navItems.map((item) => (
+                <button
+                  key={item.path}
+                  onClick={() => handleNavigation(item.path)}
+                  className={cn(
+                    "w-full text-left px-4 py-3 rounded-lg transition-all duration-300 font-medium",
+                    location.pathname === item.path
+                      ? "text-primary bg-primary/10"
+                      : "text-foreground hover:bg-accent/50 hover:text-primary"
+                  )}
+                  aria-current={location.pathname === item.path ? "page" : undefined}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </nav>
           </div>
         </div>
       )}
