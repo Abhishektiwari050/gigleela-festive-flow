@@ -133,10 +133,20 @@ const FeaturesSection = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="text-center">
-          <Button size="xl" variant="hero" className="animate-sparkle">
-            Start Exploring Artists
-          </Button>
+        <div className="text-center relative">
+          {/* Background decoration */}
+          <div className="absolute inset-0 flex items-center justify-center opacity-5">
+            <img 
+              src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Indian instruments background"
+              className="w-96 h-96 object-cover rounded-full"
+            />
+          </div>
+          <div className="relative z-10">
+            <Button size="xl" variant="hero" className="animate-sparkle">
+              Start Exploring Artists
+            </Button>
+          </div>
         </div>
       </div>
     </section>

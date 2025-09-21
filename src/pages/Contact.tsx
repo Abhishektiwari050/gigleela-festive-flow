@@ -16,11 +16,26 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative overflow-hidden">
+      {/* Enhanced Background Image */}
+      <div className="fixed inset-0">
+        <img 
+          src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+          alt="Indian cultural temple architecture background"
+          className="w-full h-full object-cover"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.src = "https://images.unsplash.com/photo-1527928159272-d4d6d5079b95?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80";
+          }}
+        />
+      </div>
+      {/* Gradient Overlay */}
+      <div className="fixed inset-0 bg-gradient-to-br from-purple-900/60 via-pink-900/40 to-orange-900/60"></div>
+      <div className="fixed inset-0 bg-black/20"></div>
       <Header />
-      <main>
-        <section className="flex items-center justify-center py-20 px-4 min-h-[60vh]">
-          <Card className="w-full max-w-xl shadow-lg">
+      <main className="relative z-10">
+        <section className="flex items-center justify-center py-20 px-4 min-h-[80vh]">
+          <Card className="w-full max-w-xl shadow-2xl backdrop-blur-sm bg-white/95 border-white/20">
             <CardHeader>
               <CardTitle className="text-3xl font-bold text-center mb-2">Contact Us</CardTitle>
               <p className="text-muted-foreground text-center">

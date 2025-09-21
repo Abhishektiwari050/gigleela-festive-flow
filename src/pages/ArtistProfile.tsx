@@ -20,7 +20,9 @@ import {
   ArrowLeft,
   MessageCircle,
   Share2,
-  BookmarkPlus
+  BookmarkPlus,
+  Trophy,
+  CheckCircle
 } from "lucide-react";
 
 const ArtistProfile = () => {
@@ -49,40 +51,230 @@ const ArtistProfile = () => {
         "1": {
           id: "1",
           name: "Priya Sharma",
-          specialty: "Classical Dance",
+          specialty: "Classical Dance - Bharatanatyam",
           category: "Classical Dance",
           location: "Mumbai, Maharashtra",
           rating: 4.9,
-          reviews: 45,
-          price: 12000,
+          reviews: 127,
+          price: 25000,
           availability: "available",
-          tags: ["Bharatanatyam", "Kathak", "Cultural Events"],
-          image: "/api/placeholder/300/300",
+          tags: ["Bharatanatyam", "Kathak", "Cultural Events", "Wedding Performances"],
+          image: "https://images.unsplash.com/photo-1594736797933-d0b22d09d3ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
           featured: true,
-          bio: "Priya Sharma is a master of classical Indian dance forms with over 15 years of experience in cultural performances. She specializes in Bharatanatyam and Kathak, bringing authentic traditional dance to weddings, festivals, and cultural events. Her graceful movements and deep understanding of classical techniques make her performances truly mesmerizing.",
-          contact: { phone: "+91 98765 43210", email: "priya.sharma@example.com" },
-          experience: "15+ years",
-          eventsCompleted: 200,
-          responseTime: "Within 1 hour"
+          bio: "Master of classical Indian dance with 18+ years of experience. Trained under Guru Padma Subrahmanyam, specializing in Bharatanatyam and Kathak. Performed at prestigious venues including Kennedy Center and Lincoln Center. Known for her expressive storytelling through dance and dedication to preserving authentic classical forms.",
+          gallery: [
+            "https://images.unsplash.com/photo-1594736797933-d0b22d09d3ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+            "https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+            "https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+            "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+          ],
+          videos: [
+            {
+              title: "Bharatanatyam - Varnam Performance",
+              url: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+              thumbnail: "https://images.unsplash.com/photo-1594736797933-d0b22d09d3ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+            },
+            {
+              title: "Kathak Fusion - Contemporary Style",
+              url: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+              thumbnail: "https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+            }
+          ],
+          contact: { 
+            phone: "+91 98765 43210", 
+            email: "priya.sharma@sanskritiq.in",
+            website: "www.priyasharmadance.com",
+            socialMedia: {
+              instagram: "@priyasharmadance",
+              youtube: "PriyaSharmaClassical",
+              facebook: "PriyaSharmaClassicalDance"
+            }
+          },
+          experience: "18+ years",
+          eventsCompleted: 350,
+          responseTime: "Within 2 hours",
+          languages: ["Hindi", "English", "Tamil", "Sanskrit"],
+          genres: ["Bharatanatyam", "Kathak", "Semi-Classical", "Devotional Dance", "Fusion"],
+          achievements: [
+            "Kalidas Samman 2020 - Government of Madhya Pradesh",
+            "Best Classical Dancer - Mumbai Dance Festival 2019",
+            "Featured in Dance India Magazine - Cover Story 2021",
+            "Cultural Ambassador - Make in India 2020",
+            "Recognized by Ministry of Culture, Government of India",
+            "International Cultural Exchange Program - USA 2019"
+          ],
+          certifications: [
+            "Certified Classical Dance Instructor - Bharatiya Vidya Bhavan",
+            "Master's Certificate in Bharatanatyam - Kalakshetra Foundation",
+            "Cultural Heritage Preservation Certificate - UNESCO"
+          ],
+          testimonials: [
+            {
+              name: "Dr. Radhika Menon",
+              role: "Director, Cultural Arts Foundation",
+              comment: "Priya's performances are nothing short of magical. Her ability to convey emotions through classical dance is unparalleled.",
+              rating: 5
+            },
+            {
+              name: "Mr. James Anderson",
+              role: "Event Organizer, Lincoln Center",
+              comment: "Working with Priya was an absolute pleasure. Her professionalism and artistry elevated our cultural festival.",
+              rating: 5
+            }
+          ],
+          education: [
+            "Bachelor of Fine Arts in Dance - Bharatiya Vidya Bhavan",
+            "Diploma in Bharatanatyam - Kalakshetra Foundation",
+            "Advanced Certification in Kathak - Kathak Kendra"
+          ],
+          specialServices: [
+            "Solo Classical Performances",
+            "Group Choreography",
+            "Wedding Ceremonies",
+            "Corporate Events",
+            "Cultural Workshops",
+            "Dance Training Sessions"
+          ],
+          equipment: [
+            "Professional Sound System",
+            "Traditional Costumes",
+            "Makeup & Styling",
+            "Performance Props",
+            "Percussion Ensemble Setup",
+            "Traditional Music Library Access"
+          ],
+          upcomingShows: [
+            {
+              date: "2024-02-15",
+              venue: "National Centre for Performing Arts, Mumbai",
+              event: "Classical Dance Festival 2024",
+              type: "Solo Performance"
+            },
+            {
+              date: "2024-03-08",
+              venue: "Kamani Auditorium, Delhi",
+              event: "Women's Day Cultural Celebration",
+              type: "Featured Artist"
+            }
+          ],
+          pricing: {
+            soloPerformance: "₹25,000 - ₹40,000",
+            groupPerformance: "₹45,000 - ₹75,000",
+            workshop: "₹15,000 per session",
+            corporate: "₹50,000 - ₹1,00,000",
+            consultation: "₹5,000 per hour",
+            masterclass: "₹20,000 per session"
+          },
+          packageDeals: [
+            {
+              name: "Wedding Complete Package",
+              description: "Solo performance + Group choreography + Sound system",
+              price: "₹75,000",
+              duration: "Full day event"
+            },
+            {
+              name: "Corporate Cultural Package",
+              description: "Cultural presentation + Workshop + Q&A session",
+              price: "₹85,000",
+              duration: "Half day program"
+            }
+          ]
         },
         "2": {
           id: "2",
-          name: "Ravi Kumar",
-          specialty: "Traditional Music",
+          name: "Pandit Ravi Shankar Mishra",
+          specialty: "Hindustani Classical Music - Sitar",
           category: "Traditional Music",
-          location: "Delhi, NCR",
+          location: "Varanasi, Uttar Pradesh",
           rating: 4.8,
-          reviews: 38,
-          price: 8000,
+          reviews: 89,
+          price: 35000,
           availability: "available",
-          tags: ["Tabla", "Sitar", "Classical Music"],
-          image: "/api/placeholder/300/300",
+          tags: ["Sitar", "Hindustani Classical", "Ragas", "Spiritual Music"],
+          image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
           featured: true,
-          bio: "Ravi Kumar is a renowned tabla and sitar player specializing in classical Indian music performances. With a deep passion for traditional melodies and rhythms, he creates an enchanting musical atmosphere for any event. His expertise spans across various classical ragas and contemporary fusion pieces.",
-          contact: { phone: "+91 98765 43211", email: "ravi.kumar@example.com" },
-          experience: "12+ years",
-          eventsCompleted: 180,
-          responseTime: "Within 2 hours"
+          bio: "Renowned sitar maestro from the Maihar Gharana tradition. Disciple of late Pt. Ravi Shankar, with 25+ years of dedicated practice. Regular performer at classical music festivals worldwide. His mastery over ragas and spiritual compositions creates a transcendent musical experience.",
+          gallery: [
+            "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+            "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+            "https://images.unsplash.com/photo-1507838153414-b4b713384a76?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+          ],
+          contact: { 
+            phone: "+91 94567 89012", 
+            email: "ravi.mishra@sanskritiq.in",
+            website: "www.ravishankarmishra.org",
+            socialMedia: {
+              instagram: "@panditravimishra",
+              youtube: "RaviShankarMishraClassical",
+              facebook: "PanditRaviShankarMishra"
+            }
+          },
+          experience: "25+ years",
+          eventsCompleted: 280,
+          responseTime: "Within 3 hours",
+          languages: ["Hindi", "English", "Sanskrit", "Urdu"],
+          genres: ["Hindustani Classical", "Dhrupad", "Thumri", "Bhajan", "Meditation Music"],
+          achievements: [
+            "Sangeet Natak Akademi Award 2018",
+            "Ustad Allauddin Khan Award 2017",
+            "Featured artist at Darbar Festival London",
+            "Cultural Ambassador - Make in India 2019",
+            "Awarded by President of India 2020"
+          ],
+          education: [
+            "Gurukul Training under Pt. Ravi Shankar (8 years)",
+            "Master's in Indian Classical Music - Banaras Hindu University",
+            "Fellowship in Musicology - Sangeet Research Academy"
+          ],
+          certifications: [
+            "All India Radio Grade A Artist",
+            "Doordarshan Empanelled Artist",
+            "UNESCO Intangible Heritage Ambassador"
+          ],
+          specialServices: [
+            "Solo Sitar Recitals",
+            "Spiritual Music Sessions",
+            "Wedding Ceremonies",
+            "Corporate Meditation Programs",
+            "Music Therapy Sessions",
+            "Masterclass Workshops"
+          ],
+          equipment: [
+            "Professional Sitar Collection (5 instruments)",
+            "Tabla Set for Accompaniment",
+            "High-Quality Sound System",
+            "Traditional Costumes",
+            "Recording Equipment"
+          ],
+          pricing: {
+            soloRecital: "₹35,000 - ₹60,000",
+            meditation: "₹20,000 - ₹35,000",
+            workshop: "₹25,000 per session",
+            corporate: "₹75,000 - ₹1,50,000",
+            consultation: "₹8,000 per hour"
+          },
+          testimonials: [
+            {
+              name: "Dr. Ashwini Bhide Deshpande",
+              role: "Classical Vocalist",
+              comment: "Pandit Ravi's sitar playing touches the soul. His deep understanding of ragas creates a meditative atmosphere.",
+              rating: 5
+            },
+            {
+              name: "Sarah Williams",
+              role: "Music Director, World Music Festival",
+              comment: "An extraordinary musician who bridges traditional and contemporary audiences beautifully.",
+              rating: 5
+            }
+          ],
+          upcomingShows: [
+            {
+              date: "2024-02-22",
+              venue: "Saptak Music Festival, Ahmedabad",
+              event: "Classical Music Night",
+              type: "Solo Recital"
+            }
+          ]
         },
         "3": {
           id: "3",
@@ -95,7 +287,7 @@ const ArtistProfile = () => {
           price: 15000,
           availability: "available",
           tags: ["Garba", "Dandiya", "Folk Dance"],
-          image: "/api/placeholder/300/300",
+          image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
           featured: false,
           bio: "Anita Patel is an expert in Gujarati folk dances and traditional celebration performances. She brings the vibrant energy of Garba and Dandiya to festivals and weddings, creating an authentic cultural experience that connects people with their heritage. Her dynamic performances are a celebration of Gujarat's rich cultural traditions.",
           contact: { phone: "+91 98765 43212", email: "anita.patel@example.com" },
@@ -114,7 +306,7 @@ const ArtistProfile = () => {
           price: 6000,
           availability: "busy",
           tags: ["Bhajan", "Kirtan", "Spiritual Music"],
-          image: "/api/placeholder/300/300",
+          image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
           featured: false,
           bio: "Vikram Singh is a devoted spiritual singer specializing in bhajans and devotional music performances. His soulful voice and deep spiritual connection create a divine atmosphere at religious gatherings, temples, and spiritual events. He brings peace and devotion to every performance.",
           contact: { phone: "+91 98765 43213", email: "vikram.singh@example.com" },
@@ -133,7 +325,7 @@ const ArtistProfile = () => {
           price: 20000,
           availability: "available",
           tags: ["Modern Fusion", "Contemporary", "Cultural Fusion"],
-          image: "/api/placeholder/300/300",
+          image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
           featured: true,
           bio: "Meera Nair is a contemporary artist who masterfully blends traditional and modern performance styles. Her innovative fusion performances combine classical Indian dance with contemporary movements, creating a unique and captivating experience for modern audiences while honoring traditional roots.",
           contact: { phone: "+91 98765 43214", email: "meera.nair@example.com" },
@@ -152,7 +344,7 @@ const ArtistProfile = () => {
           price: 10000,
           availability: "available",
           tags: ["Veena", "Flute", "Classical Instrumental"],
-          image: "/api/placeholder/300/300",
+          image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
           featured: false,
           bio: "Arjun Kapoor is a master of traditional Indian instruments with exceptional expertise in veena and flute. His melodious performances showcase the pure essence of classical Indian music, creating an enchanting atmosphere for cultural events, concerts, and spiritual gatherings.",
           contact: { phone: "+91 98765 43215", email: "arjun.kapoor@example.com" },
@@ -167,23 +359,47 @@ const ArtistProfile = () => {
           {
             id: "1",
             rating: 5,
-            comment: "Priya's performance at our wedding was absolutely magical! Her Bharatanatyam was so graceful and authentic. Highly recommended!",
-            client: { name: "Rajesh & Kavya" },
-            createdAt: "2024-01-15T10:00:00Z"
+            comment: "Priya's Bharatanatyam performance at our daughter's wedding was absolutely mesmerizing. Her grace, technique, and spiritual connection to the dance left all our guests spellbound. The way she incorporated traditional stories into her performance was exceptional. Highly professional and punctual. Would definitely book again!",
+            client: { name: "Rajesh Gupta" },
+            createdAt: "2024-01-15T10:00:00Z",
+            event: "Wedding Ceremony",
+            verified: true
           },
           {
             id: "2",
             rating: 5,
-            comment: "Amazing performance for our cultural festival. The audience was mesmerized by her dance. Professional and talented!",
-            client: { name: "Mumbai Cultural Center" },
-            createdAt: "2024-01-10T15:30:00Z"
+            comment: "Outstanding performance at our corporate Diwali celebration. Priya managed to adapt her classical style perfectly for our diverse audience. Her explanation of the cultural significance added educational value. The costume and makeup were authentic and beautiful. Excellent communication throughout the booking process.",
+            client: { name: "Anita Sharma - Tech Corp" },
+            createdAt: "2024-01-10T15:30:00Z",
+            event: "Corporate Event",
+            verified: true
           },
           {
             id: "3",
+            rating: 5,
+            comment: "Priya conducted a workshop for our cultural center. Her teaching methodology is excellent - she breaks down complex movements into understandable steps. Very patient with beginners and inspiring for advanced students. The workshop covered both technical aspects and cultural context beautifully.",
+            client: { name: "Dr. Meera Nair - Cultural Center" },
+            createdAt: "2024-01-05T12:00:00Z",
+            event: "Cultural Workshop",
+            verified: true
+          },
+          {
+            id: "4",
             rating: 4,
-            comment: "Beautiful classical dance performance. Priya brought such elegance to our event.",
-            client: { name: "Sunita Sharma" },
-            createdAt: "2024-01-05T12:00:00Z"
+            comment: "Beautiful Kathak performance at our family function. Priya's expressions and storytelling through dance were captivating. The only minor issue was a slight delay in arrival due to traffic, but she more than made up for it with an extended performance. Very professional and talented artist.",
+            client: { name: "Vikram Singh" },
+            createdAt: "2023-12-28T18:00:00Z",
+            event: "Family Function",
+            verified: true
+          },
+          {
+            id: "5",
+            rating: 5,
+            comment: "Priya has been our go-to artist for major cultural events. Her versatility in both Bharatanatyam and Kathak is remarkable. She always comes well-prepared with authentic costumes and has never disappointed us. A true artist who respects and preserves our cultural heritage. Highly recommended for any cultural event.",
+            client: { name: "Cultural Society Mumbai" },
+            createdAt: "2023-12-20T16:00:00Z",
+            event: "Cultural Festival",
+            verified: true
           }
         ],
         "2": [
@@ -386,7 +602,7 @@ const ArtistProfile = () => {
               <div className="flex items-end gap-6">
                 <div className="w-32 h-32 rounded-full bg-white p-1 shadow-lg">
                   <img
-                    src={artist.image || '/api/placeholder/128/128'}
+                    src={artist.image || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80'}
                     alt={artist.name}
                     className="w-full h-full rounded-full object-cover"
                   />
@@ -462,9 +678,11 @@ const ArtistProfile = () => {
           transition={{ delay: 0.2 }}
         >
           <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-            <TabsList className="grid w-full grid-cols-4 lg:w-[600px] mx-auto">
+            <TabsList className="grid w-full grid-cols-6 lg:w-[800px] mx-auto">
               <TabsTrigger value="overview">Overview</TabsTrigger>
               <TabsTrigger value="portfolio">Portfolio</TabsTrigger>
+              <TabsTrigger value="gallery">Gallery</TabsTrigger>
+              <TabsTrigger value="videos">Videos</TabsTrigger>
               <TabsTrigger value="reviews">Reviews</TabsTrigger>
               <TabsTrigger value="contact">Contact</TabsTrigger>
             </TabsList>
@@ -474,10 +692,38 @@ const ArtistProfile = () => {
                 <CardHeader>
                   <CardTitle>About {artist.name}</CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="space-y-6">
                   <p className="text-gray-600 leading-relaxed">
                     {artist.bio || "A passionate artist dedicated to bringing cultural performances to life. With years of experience and a deep connection to traditional arts, they create memorable experiences for every event."}
                   </p>
+                  
+                  {artist.achievements && (
+                    <div>
+                      <h3 className="font-semibold mb-3 flex items-center gap-2">
+                        <Trophy className="h-5 w-5 text-yellow-500" />
+                        Achievements & Awards
+                      </h3>
+                      <ul className="space-y-2">
+                        {artist.achievements.slice(0, 3).map((achievement, index) => (
+                          <li key={index} className="flex items-start gap-2">
+                            <div className="w-2 h-2 bg-yellow-500 rounded-full mt-2 flex-shrink-0"></div>
+                            <span className="text-sm text-gray-600">{achievement}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  
+                  {artist.languages && (
+                    <div>
+                      <h3 className="font-semibold mb-3">Languages</h3>
+                      <div className="flex flex-wrap gap-2">
+                        {artist.languages.map((language, index) => (
+                          <Badge key={index} variant="outline">{language}</Badge>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </CardContent>
               </Card>
 
@@ -486,15 +732,21 @@ const ArtistProfile = () => {
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <Award className="w-5 h-5 text-purple-600" />
-                      Specialties
+                      Specializations
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="flex flex-wrap gap-2">
-                      <Badge variant="secondary">{artist.category}</Badge>
-                      <Badge variant="outline">Traditional Dance</Badge>
-                      <Badge variant="outline">Cultural Events</Badge>
-                      <Badge variant="outline">Festivals</Badge>
+                      {artist.genres ? artist.genres.map((genre, index) => (
+                        <Badge key={index} variant="secondary">{genre}</Badge>
+                      )) : (
+                        <>
+                          <Badge variant="secondary">{artist.category}</Badge>
+                          <Badge variant="outline">Traditional Arts</Badge>
+                          <Badge variant="outline">Cultural Events</Badge>
+                          <Badge variant="outline">Festivals</Badge>
+                        </>
+                      )}
                     </div>
                   </CardContent>
                 </Card>
@@ -519,6 +771,88 @@ const ArtistProfile = () => {
                   </CardContent>
                 </Card>
               </div>
+              
+              {artist.specialServices && (
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Services Offered</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      {artist.specialServices.map((service, index) => (
+                        <div key={index} className="flex items-center gap-2">
+                          <CheckCircle className="h-4 w-4 text-green-500" />
+                          <span className="text-sm">{service}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              )}
+              
+              {artist.pricing && (
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Pricing Options</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {Object.entries(artist.pricing).map(([type, price], index) => (
+                        <div key={index} className="p-3 border rounded-lg">
+                          <h4 className="font-medium capitalize mb-1">{type.replace(/([A-Z])/g, ' $1').trim()}</h4>
+                          <p className="text-primary font-semibold">{String(price)}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              )}
+              
+              {artist.packageDeals && (
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Package Deals</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      {artist.packageDeals.map((pkg, index) => (
+                        <div key={index} className="p-4 border rounded-lg bg-gradient-to-br from-purple-50 to-pink-50">
+                          <h4 className="font-semibold mb-2">{pkg.name}</h4>
+                          <p className="text-sm text-gray-600 mb-3">{pkg.description}</p>
+                          <div className="flex justify-between items-center">
+                            <span className="text-primary font-bold text-lg">{pkg.price}</span>
+                            <span className="text-sm text-gray-500">{pkg.duration}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              )}
+              
+              {artist.upcomingShows && (
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Upcoming Shows</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      {artist.upcomingShows.map((show, index) => (
+                        <div key={index} className="flex items-center gap-4 p-3 border rounded-lg">
+                          <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                            <Calendar className="w-6 h-6 text-purple-600" />
+                          </div>
+                          <div className="flex-1">
+                            <h4 className="font-medium">{show.event}</h4>
+                            <p className="text-sm text-gray-600">{show.venue}</p>
+                            <p className="text-xs text-gray-500">{new Date(show.date).toLocaleDateString()} • {show.type}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              )}
             </TabsContent>
 
             <TabsContent value="portfolio" className="space-y-6">
@@ -528,21 +862,175 @@ const ArtistProfile = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    {[...Array(8)].map((_, index) => (
+                    {[
+                      "https://images.unsplash.com/photo-1534329539061-64caeb388c42?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                      "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                      "https://images.unsplash.com/photo-1594736797933-d0b22d09d3ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                      "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                      "https://images.unsplash.com/photo-1517164850305-99a3e65bb47e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                      "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                      "https://images.unsplash.com/photo-1527928159272-d4d6d5079b95?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    ].map((imageUrl, index) => (
                       <div
                         key={index}
-                        className="aspect-square rounded-lg bg-gradient-to-br from-purple-100 to-pink-100 overflow-hidden"
+                        className="aspect-square rounded-lg bg-gradient-to-br from-purple-100 to-pink-100 overflow-hidden group cursor-pointer"
                       >
                         <img
-                          src={`/api/placeholder/200/200`}
+                          src={imageUrl}
                           alt={`Performance ${index + 1}`}
-                          className="w-full h-full object-cover hover:scale-105 transition-transform cursor-pointer"
+                          className="w-full h-full object-cover hover:scale-105 transition-transform group-hover:scale-110 duration-300"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.src = `https://picsum.photos/400/400?random=${index + 100}`;
+                          }}
                         />
                       </div>
                     ))}
                   </div>
                 </CardContent>
               </Card>
+            </TabsContent>
+
+            <TabsContent value="gallery" className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Performance Gallery</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid grid-cols-2 gap-4">
+                      {(artist.gallery || [
+                        "https://images.unsplash.com/photo-1594736797933-d0b22d09d3ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                        "https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                        "https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                        "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                      ]).map((imageUrl, index) => (
+                        <div
+                          key={index}
+                          className="aspect-square rounded-lg overflow-hidden group cursor-pointer shadow-md hover:shadow-lg transition-shadow"
+                        >
+                          <img
+                            src={imageUrl}
+                            alt={`Performance ${index + 1}`}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            onError={(e) => {
+                              const target = e.target as HTMLImageElement;
+                              target.src = `https://picsum.photos/400/400?random=${index + 200}`;
+                            }}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Behind the Scenes</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid grid-cols-2 gap-4">
+                      {[
+                        "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                        "https://images.unsplash.com/photo-1517164850305-99a3e65bb47e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                        "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                        "https://images.unsplash.com/photo-1527928159272-d4d6d5079b95?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                      ].map((imageUrl, index) => (
+                        <div
+                          key={index}
+                          className="aspect-square rounded-lg overflow-hidden group cursor-pointer shadow-md hover:shadow-lg transition-shadow"
+                        >
+                          <img
+                            src={imageUrl}
+                            alt={`Behind the scenes ${index + 1}`}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            onError={(e) => {
+                              const target = e.target as HTMLImageElement;
+                              target.src = `https://picsum.photos/400/400?random=${index + 300}`;
+                            }}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </TabsContent>
+
+            <TabsContent value="videos" className="space-y-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Performance Videos</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    {(artist.videos || [
+                      {
+                        title: "Classical Performance Highlight",
+                        thumbnail: "https://images.unsplash.com/photo-1594736797933-d0b22d09d3ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                      },
+                      {
+                        title: "Cultural Festival Performance",
+                        thumbnail: "https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                      }
+                    ]).map((video, index) => (
+                      <div key={index} className="group cursor-pointer">
+                        <div className="aspect-video rounded-lg overflow-hidden bg-gradient-to-br from-purple-100 to-pink-100 relative">
+                          <img
+                            src={video.thumbnail}
+                            alt={video.title}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            onError={(e) => {
+                              const target = e.target as HTMLImageElement;
+                              target.src = `https://picsum.photos/600/400?random=${index + 400}`;
+                            }}
+                          />
+                          <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center group-hover:bg-opacity-40 transition-all">
+                            <div className="w-16 h-16 bg-white bg-opacity-90 rounded-full flex items-center justify-center">
+                              <div className="w-0 h-0 border-l-[12px] border-l-purple-600 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent ml-1"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <h3 className="font-medium mt-3 text-center">{video.title}</h3>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+              
+              {artist.testimonials && (
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Client Testimonials</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      {artist.testimonials.map((testimonial, index) => (
+                        <div key={index} className="p-4 border rounded-lg bg-gradient-to-br from-purple-50 to-pink-50">
+                          <div className="flex items-center gap-2 mb-3">
+                            {[...Array(5)].map((_, i) => (
+                              <Star
+                                key={i}
+                                className={`w-4 h-4 ${
+                                  i < testimonial.rating
+                                    ? 'text-yellow-400 fill-current'
+                                    : 'text-gray-300'
+                                }`}
+                              />
+                            ))}
+                          </div>
+                          <p className="text-gray-600 mb-3 italic">"{testimonial.comment}"</p>
+                          <div>
+                            <p className="font-semibold">{testimonial.name}</p>
+                            <p className="text-sm text-gray-500">{testimonial.role}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              )}
             </TabsContent>
 
             <TabsContent value="reviews" className="space-y-6">

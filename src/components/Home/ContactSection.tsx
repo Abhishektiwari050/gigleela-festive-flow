@@ -43,8 +43,16 @@ const offices = [
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="py-20 gradient-subtle">
-      <div className="container mx-auto px-4">
+    <section id="contact" className="py-20 gradient-subtle relative overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 opacity-5">
+        <img 
+          src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80"
+          alt="Indian cultural instruments background"
+          className="w-full h-full object-cover"
+        />
+      </div>
+      <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16 animate-slide-up">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">

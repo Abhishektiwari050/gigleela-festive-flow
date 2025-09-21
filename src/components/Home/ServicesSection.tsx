@@ -115,25 +115,35 @@ const ServicesSection = () => {
         </div>
 
         {/* Add-on Services */}
-        <div className="bg-card rounded-2xl p-8 border border-border">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold mb-4">Complete Event Solutions</h3>
-            <p className="text-muted-foreground">Enhance your cultural experience with our additional services</p>
+        <div className="bg-card rounded-2xl p-8 border border-border relative overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0 opacity-5">
+            <img 
+              src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+              alt="Indian festival background"
+              className="w-full h-full object-cover"
+            />
           </div>
-          
-          <div className="grid md:grid-cols-3 gap-6">
-            {addOns.map((addon, index) => {
-              const IconComponent = addon.icon;
-              return (
-                <div key={index} className="text-center space-y-3 animate-slide-up" style={{ animationDelay: `${(index + 6) * 0.1}s` }}>
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10">
-                    <IconComponent className="h-6 w-6 text-primary" />
+          <div className="relative z-10">
+            <div className="text-center mb-8">
+              <h3 className="text-2xl font-bold mb-4">Complete Event Solutions</h3>
+              <p className="text-muted-foreground">Enhance your cultural experience with our additional services</p>
+            </div>
+            
+            <div className="grid md:grid-cols-3 gap-6">
+              {addOns.map((addon, index) => {
+                const IconComponent = addon.icon;
+                return (
+                  <div key={index} className="text-center space-y-3 animate-slide-up" style={{ animationDelay: `${(index + 6) * 0.1}s` }}>
+                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10">
+                      <IconComponent className="h-6 w-6 text-primary" />
+                    </div>
+                    <h4 className="font-semibold">{addon.title}</h4>
+                    <p className="text-sm text-muted-foreground">{addon.description}</p>
                   </div>
-                  <h4 className="font-semibold">{addon.title}</h4>
-                  <p className="text-sm text-muted-foreground">{addon.description}</p>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
 

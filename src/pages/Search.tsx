@@ -176,7 +176,7 @@ const Search = () => {
     }
     
     try {
-      await apiClient.addToFavorites(user.id, artistId);
+      await apiClient.addFavorite(artistId);
       toast({
         title: "Added to favorites!",
         description: "Artist has been added to your favorites"
@@ -207,8 +207,23 @@ const Search = () => {
       <Header />
       <main>
         {/* Hero Search Section */}
-        <section className="bg-gradient-festival py-16 px-4">
-          <div className="container mx-auto">
+        <section className="relative py-16 px-4 overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0">
+            <img 
+              src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+              alt="Indian musical instruments and culture background"
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.src = "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80";
+              }}
+            />
+          </div>
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-indigo-900/80 via-purple-900/70 to-blue-900/80"></div>
+          <div className="absolute inset-0 bg-festival-pattern opacity-10"></div>
+          <div className="container mx-auto relative z-10">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

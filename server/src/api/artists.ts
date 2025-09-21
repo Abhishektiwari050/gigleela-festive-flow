@@ -217,7 +217,7 @@ router.post('/', (req, res) => {
       location,
       bio,
       experience,
-      image: image || '/placeholder.svg',
+      image: image || `https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80`,
       rating: 0,
       reviews: 0,
       price: parseFloat(price),

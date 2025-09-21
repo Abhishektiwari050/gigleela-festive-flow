@@ -78,8 +78,16 @@ const AboutSection = () => {
           
           {/* Mission Card */}
           <div className="animate-slide-up" style={{ animationDelay: '0.2s' }}>
-            <Card className="border-0 shadow-festival bg-gradient-subtle">
-              <CardContent className="p-8">
+            <Card className="border-0 shadow-festival bg-gradient-subtle overflow-hidden relative">
+              {/* Background Image */}
+              <div className="absolute inset-0 opacity-10">
+                <img 
+                  src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  alt="Indian classical dance background"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <CardContent className="p-8 relative z-10">
                 <div className="text-center space-y-6">
                   <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-festival">
                     <Target className="h-8 w-8 text-white" />

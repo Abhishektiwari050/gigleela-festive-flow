@@ -30,9 +30,17 @@ const NotFound = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col relative overflow-hidden">
+      {/* Background Image */}
+      <div className="fixed inset-0 opacity-5">
+        <img 
+          src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80"
+          alt="Indian classical dance background"
+          className="w-full h-full object-cover"
+        />
+      </div>
       <Header />
-      <main className="flex-1 flex items-center justify-center py-12 px-4">
+      <main className="flex-1 flex items-center justify-center py-12 px-4 relative z-10">
         <div className="max-w-lg w-full text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}

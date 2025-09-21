@@ -65,10 +65,11 @@ const BookingPage = () => {
     try {
       setLoading(true);
       const artistData = await apiClient.getArtist(id!);
-      setArtist(artistData);
+      const artistInfo = artistData.data?.artist || artistData;
+      setArtist(artistInfo);
       setBookingData(prev => ({
         ...prev,
-        budget: artistData.pricing?.toString() || ''
+        budget: artistInfo.price?.toString() || ''
       }));
     } catch (error) {
       console.error('Error fetching artist:', error);
@@ -200,7 +201,7 @@ const BookingPage = () => {
               <CardContent className="p-6">
                 <div className="text-center mb-6">
                   <img
-                    src={artist.image || '/api/placeholder/100/100'}
+                    src={artist.image || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80'}
                     alt={artist.name}
                     className="w-20 h-20 rounded-full mx-auto mb-3 object-cover"
                   />
@@ -219,7 +220,7 @@ const BookingPage = () => {
                   </div>
                   <div className="flex items-center gap-2">
                     <CreditCard className="w-4 h-4 text-purple-600" />
-                    <span>₹{artist.pricing}/event</span>
+                    <span>₹{artist.price}/event</span>
                   </div>
                 </div>
                 
@@ -434,10 +435,10 @@ const BookingPage = () => {
                         type="number"
                         value={bookingData.budget}
                         onChange={(e) => handleInputChange('budget', e.target.value)}
-                        placeholder={artist.pricing?.toString()}
+                        placeholder={artist.price?.toString()}
                       />
                       <p className="text-sm text-gray-600 mt-1">
-                        Artist's rate: ₹{artist.pricing}/event
+                        Artist's rate: ₹{artist.price}/event
                       </p>
                     </div>
                   </motion.div>

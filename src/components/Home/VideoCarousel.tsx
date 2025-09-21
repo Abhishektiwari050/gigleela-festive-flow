@@ -17,6 +17,8 @@ const VideoCarousel = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [videosLoaded, setVideosLoaded] = useState(false);
+  const [videoError, setVideoError] = useState(false);
 
   const videos: VideoSlide[] = [
     {
@@ -24,8 +26,8 @@ const VideoCarousel = () => {
       title: "Classical Indian Dance",
       subtitle: "Bharatanatyam Perfection",
       description: "Experience the grace and precision of traditional Bharatanatyam performed by master dancers",
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-      posterUrl: "/placeholder.svg",
+      videoUrl: "https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      posterUrl: "https://images.unsplash.com/photo-1594736797933-d0b22d09d3ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
       category: "Classical Dance"
     },
     {
@@ -33,8 +35,8 @@ const VideoCarousel = () => {
       title: "Hindustani Classical Music",
       subtitle: "Raga Traditions",
       description: "Immerse yourself in the spiritual journey of classical Indian ragas and vocal traditions",
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-      posterUrl: "/placeholder.svg",
+      videoUrl: "https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+      posterUrl: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
       category: "Classical Music"
     },
     {
@@ -42,8 +44,8 @@ const VideoCarousel = () => {
       title: "Folk Heritage",
       subtitle: "Regional Treasures", 
       description: "Discover vibrant folk performances that celebrate India's diverse cultural landscape",
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-      posterUrl: "/placeholder.svg",
+      videoUrl: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      posterUrl: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
       category: "Folk Arts"
     },
     {
@@ -51,22 +53,34 @@ const VideoCarousel = () => {
       title: "Festival Celebrations",
       subtitle: "Cultural Festivities",
       description: "Join the joyous celebrations that bring communities together through music and dance",
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4", 
-      posterUrl: "/placeholder.svg",
+      videoUrl: "https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4", 
+      posterUrl: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
       category: "Festivals"
     }
   ];
 
-  // Auto-advance slides
+  // Auto-advance slides with fallback to image-only mode
   useEffect(() => {
     if (!isAutoPlaying) return;
     
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % videos.length);
-    }, 6000);
+    }, videoError ? 4000 : 6000); // Faster transitions for image-only mode
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying, videos.length]);
+  }, [isAutoPlaying, videos.length, videoError]);
+
+  // Check if videos can load
+  useEffect(() => {
+    const checkVideoSupport = () => {
+      const video = document.createElement('video');
+      const canPlayMp4 = video.canPlayType('video/mp4');
+      if (!canPlayMp4) {
+        setVideoError(true);
+      }
+    };
+    checkVideoSupport();
+  }, []);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % videos.length);
@@ -105,37 +119,63 @@ const VideoCarousel = () => {
 
   return (
     <div className="relative w-full h-screen overflow-hidden">
-      {/* Video Background */}
+      {/* Background - Video or Image */}
       <div className="absolute inset-0">
-        {videos.map((video, index) => (
+        {videoError ? (
+          // Fallback to image-only carousel when videos fail
           <div
-            key={video.id}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === currentSlide ? 'opacity-100' : 'opacity-0'
-            }`}
-          >
-            <video
-              id={`video-${index}`}
-              className="w-full h-full object-cover"
-              poster={video.posterUrl}
-              muted={isMuted}
-              loop
-              playsInline
-              onLoadedData={() => {
-                if (index === currentSlide && isPlaying) {
-                  const videoElement = document.getElementById(`video-${index}`) as HTMLVideoElement;
-                  videoElement?.play();
-                }
-              }}
+            className="absolute inset-0 transition-opacity duration-1000 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: `url(${videos[currentSlide].posterUrl})`,
+            }}
+          />
+        ) : (
+          // Video carousel when supported
+          videos.map((video, index) => (
+            <div
+              key={video.id}
+              className={`absolute inset-0 transition-opacity duration-1000 ${
+                index === currentSlide ? 'opacity-100' : 'opacity-0'
+              }`}
             >
-              <source src={video.videoUrl} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        ))}
+              <video
+                id={`video-${index}`}
+                className="w-full h-full object-cover"
+                poster={video.posterUrl}
+                muted={isMuted}
+                loop
+                playsInline
+                preload={index === 0 ? "metadata" : "none"}
+                onLoadedData={() => {
+                  if (index === currentSlide && isPlaying) {
+                    const videoElement = document.getElementById(`video-${index}`) as HTMLVideoElement;
+                    videoElement?.play();
+                  }
+                  if (index === 0) setVideosLoaded(true);
+                }}
+                onError={(e) => {
+                  console.warn(`Failed to load video ${index}, switching to image-only mode`);
+                  setVideoError(true);
+                  const target = e.target as HTMLVideoElement;
+                  target.style.display = 'none';
+                  // Show poster as fallback
+                  const container = target.parentElement;
+                  if (container) {
+                    container.style.backgroundImage = `url(${video.posterUrl})`;
+                    container.style.backgroundSize = 'cover';
+                    container.style.backgroundPosition = 'center';
+                  }
+                }}
+              >
+                <source src={video.videoUrl} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          ))
+        )}
         
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/60" />
+        {/* Enhanced Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/70" />
       </div>
 
       {/* Content */}
@@ -164,15 +204,18 @@ const VideoCarousel = () => {
                 {videos[currentSlide].description}
               </p>
 
-              {/* CTA Buttons */}
+              {/* CTA Buttons - Enhanced visibility */}
               <div className="flex flex-col sm:flex-row gap-4 pt-6">
-                <Button size="lg" variant="secondary" className="text-lg font-semibold">
+                <Button 
+                  size="lg" 
+                  className="text-lg font-semibold bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-2 border-white/20 shadow-lg ring-2 ring-white/30 backdrop-blur-sm"
+                >
                   Explore Artists
                 </Button>
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="text-white border-white hover:bg-white hover:text-black text-lg font-semibold"
+                  className="text-white border-2 border-white bg-white/10 hover:bg-white hover:text-black text-lg font-semibold backdrop-blur-sm shadow-lg ring-2 ring-white/20"
                 >
                   Learn More
                 </Button>
@@ -205,25 +248,27 @@ const VideoCarousel = () => {
         </Button>
       </div>
 
-      {/* Video Controls */}
-      <div className="absolute bottom-24 left-4 z-20 flex space-x-2">
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={togglePlay}
-          className="h-10 w-10 rounded-full bg-black/30 text-white hover:bg-black/50 backdrop-blur-sm"
-        >
-          {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
-        </Button>
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={toggleMute}
-          className="h-10 w-10 rounded-full bg-black/30 text-white hover:bg-black/50 backdrop-blur-sm"
-        >
-          {isMuted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
-        </Button>
-      </div>
+      {/* Video Controls - Hidden in image-only mode */}
+      {!videoError && (
+        <div className="absolute bottom-24 left-4 z-20 flex space-x-2">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={togglePlay}
+            className="h-10 w-10 rounded-full bg-black/30 text-white hover:bg-black/50 backdrop-blur-sm"
+          >
+            {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={toggleMute}
+            className="h-10 w-10 rounded-full bg-black/30 text-white hover:bg-black/50 backdrop-blur-sm"
+          >
+            {isMuted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+          </Button>
+        </div>
+      )}
 
       {/* Slide Indicators */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">

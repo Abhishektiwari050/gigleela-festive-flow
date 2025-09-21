@@ -106,9 +106,9 @@ CREATE TABLE IF NOT EXISTS artists (
 
 -- Insert sample artists
 INSERT INTO artists (name, email, phone, specialization, experience, pricing, location, bio, profile_image, rating, total_reviews, available) VALUES
-('Rajesh Kumar', 'rajesh@example.com', '+91-98765-43210', ARRAY['Classical Dance', 'Bharatanatyam'], 15, '{"hourly": 2500, "event": 15000}', 'Mumbai, India', 'Master of Bharatanatyam with 15+ years of experience in classical Indian dance forms.', '/api/placeholder/300/300', 4.8, 24, true),
-('Priya Sharma', 'priya@example.com', '+91-87654-32109', ARRAY['Folk Music', 'Classical Vocals'], 12, '{"hourly": 2000, "event": 12000}', 'Jaipur, India', 'Renowned folk singer specializing in Rajasthani and Punjabi traditional music.', '/api/placeholder/300/300', 4.9, 18, true),
-('Amit Singh', 'amit@example.com', '+91-76543-21098', ARRAY['Tabla', 'Percussion'], 20, '{"hourly": 1800, "event": 10000}', 'Delhi, India', 'Professional tabla player and percussion artist with expertise in Indian classical music.', '/api/placeholder/300/300', 4.7, 32, true);
+('Rajesh Kumar', 'rajesh@example.com', '+91-98765-43210', ARRAY['Classical Dance', 'Bharatanatyam'], 15, '{"hourly": 2500, "event": 15000}', 'Mumbai, India', 'Master of Bharatanatyam with 15+ years of experience in classical Indian dance forms.', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80', 4.8, 24, true),
+('Priya Sharma', 'priya@example.com', '+91-87654-32109', ARRAY['Folk Music', 'Classical Vocals'], 12, '{"hourly": 2000, "event": 12000}', 'Jaipur, India', 'Renowned folk singer specializing in Rajasthani and Punjabi traditional music.', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80', 4.9, 18, true),
+('Amit Singh', 'amit@example.com', '+91-76543-21098', ARRAY['Tabla', 'Percussion'], 20, '{"hourly": 1800, "event": 10000}', 'Delhi, India', 'Professional tabla player and percussion artist with expertise in Indian classical music.', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80', 4.7, 32, true);
 
 -- Create Reviews and Bookings tables
 CREATE TABLE IF NOT EXISTS reviews (

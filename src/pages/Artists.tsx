@@ -63,99 +63,153 @@ const Artists = () => {
     {
       id: "1",
       name: "Priya Sharma",
-      specialty: "Classical Dance",
+      specialty: "Classical Dance - Bharatanatyam",
       category: "dance",
       location: "Mumbai, Maharashtra",
       rating: 4.9,
-      reviews: 45,
-      price: 12000,
+      reviews: 127,
+      price: 25000,
       priceUnit: "per_event",
       availability: "available",
-      tags: ["Bharatanatyam", "Kathak", "Cultural Events"],
-      image: "/api/placeholder/150/150",
+      tags: ["Bharatanatyam", "Kathak", "Cultural Events", "Wedding Performances"],
+      image: "https://images.unsplash.com/photo-1594736797933-d0b22d09d3ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
       featured: true,
-      bio: "Master of classical Indian dance forms with 15+ years of experience in cultural performances.",
-      contact: { phone: "+91 98765 43210", email: "priya.sharma@example.com" }
+      bio: "Master of classical Indian dance with 18+ years of experience. Trained under Guru Padma Subrahmanyam, specializing in Bharatanatyam and Kathak. Performed at prestigious venues including Kennedy Center and Lincoln Center.",
+      contact: { 
+        phone: "+91 98765 43210", 
+        email: "priya.sharma@sanskritiq.in",
+        website: "www.priyasharmadance.com",
+        socialMedia: {
+          instagram: "@priyasharmadance",
+          youtube: "PriyaSharmaClassical"
+        }
+      },
+      experience: "18+ years",
+      languages: ["Hindi", "English", "Tamil", "Sanskrit"],
+      genres: ["Bharatanatyam", "Kathak", "Semi-Classical", "Devotional Dance"],
+      achievements: ["Kalidas Samman 2020", "Best Classical Dancer - Mumbai Dance Festival 2019", "Featured in Dance India Magazine"]
     },
     {
       id: "2",
-      name: "Ravi Kumar",
-      specialty: "Traditional Music",
-      category: "music",
-      location: "Delhi, NCR",
+      name: "Pandit Ravi Shankar Mishra",
+      specialty: "Hindustani Classical Music - Sitar",
+      category: "classical",
+      location: "Varanasi, Uttar Pradesh",
       rating: 4.8,
-      reviews: 38,
-      price: 8000,
+      reviews: 89,
+      price: 35000,
       priceUnit: "per_event",
       availability: "available",
-      tags: ["Tabla", "Sitar", "Classical Music"],
-      image: "/api/placeholder/150/150",
+      tags: ["Sitar", "Hindustani Classical", "Ragas", "Spiritual Music"],
+      image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
       featured: true,
-      bio: "Renowned tabla and sitar player specializing in classical Indian music performances."
+      bio: "Renowned sitar maestro from the Maihar Gharana tradition. Disciple of late Pt. Ravi Shankar, with 25+ years of dedicated practice. Regular performer at classical music festivals worldwide.",
+      contact: { 
+        phone: "+91 94567 89012", 
+        email: "ravi.mishra@sanskritiq.in",
+        website: "www.ravishankarmishra.org"
+      },
+      experience: "25+ years",
+      languages: ["Hindi", "English", "Sanskrit"],
+      genres: ["Hindustani Classical", "Dhrupad", "Thumri", "Bhajan"],
+      achievements: ["Sangeet Natak Akademi Award 2018", "Ustad Allauddin Khan Award 2017", "Featured artist at Darbar Festival London"]
     },
     {
       id: "3",
-      name: "Anita Patel",
-      specialty: "Folk Performance",
-      category: "folk",
-      location: "Ahmedabad, Gujarat",
-      rating: 5.0,
-      reviews: 52,
-      price: 15000,
-      priceUnit: "per_event",
-      availability: "available",
-      tags: ["Garba", "Dandiya", "Folk Dance"],
-      image: "/api/placeholder/150/150",
-      featured: false,
-      bio: "Expert in Gujarati folk dances and traditional celebration performances."
-    },
-    {
-      id: "4",
-      name: "Vikram Singh",
-      specialty: "Devotional Music",
-      category: "devotional",
-      location: "Jaipur, Rajasthan",
-      rating: 4.7,
-      reviews: 29,
-      price: 6000,
-      priceUnit: "per_event",
-      availability: "busy",
-      tags: ["Bhajan", "Kirtan", "Spiritual Music"],
-      image: "/api/placeholder/150/150",
-      featured: false,
-      bio: "Devotional singer specializing in bhajans and spiritual music performances."
-    },
-    {
-      id: "5",
       name: "Meera Nair",
-      specialty: "Fusion Performance",
-      category: "fusion",
-      location: "Bangalore, Karnataka",
-      rating: 4.6,
-      reviews: 33,
+      specialty: "Carnatic Vocal Music",
+      category: "classical",
+      location: "Chennai, Tamil Nadu",
+      rating: 4.7,
+      reviews: 156,
       price: 20000,
       priceUnit: "per_event",
       availability: "available",
-      tags: ["Modern Fusion", "Contemporary", "Cultural Fusion"],
-      image: "/api/placeholder/150/150",
+      tags: ["Carnatic Vocal", "Classical Music", "Devotional", "Concert Performances"],
+      image: "https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      featured: false,
+      bio: "Accomplished Carnatic vocalist with training from Trinity College of Music. Specialized in devotional compositions and classical ragas. Regular performer at Madras Music Season.",
+      contact: { 
+        phone: "+91 98123 45678", 
+        email: "meera.nair@sanskritiq.in" 
+      },
+      experience: "15+ years",
+      languages: ["Tamil", "Malayalam", "English", "Sanskrit"],
+      genres: ["Carnatic Classical", "Devotional", "Bhajans", "Keertanas"],
+      achievements: ["Best Vocalist - Chennai Music Festival 2020", "Grade 8 Distinction Trinity College", "Featured in The Hindu newspaper"]
+    },
+    {
+      id: "4",
+      name: "Arjun Singh Rajput",
+      specialty: "Rajasthani Folk Dance & Music",
+      category: "folk",
+      location: "Jaipur, Rajasthan",
+      rating: 4.6,
+      reviews: 203,
+      price: 18000,
+      priceUnit: "per_event",
+      availability: "available",
+      tags: ["Folk Dance", "Rajasthani Culture", "Kalbelia", "Ghoomar"],
+      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      featured: false,
+      bio: "Master of Rajasthani folk traditions including Kalbelia, Ghoomar, and Chari dance. Born into a family of traditional performers, preserving authentic Rajasthani culture for over 20 years.",
+      contact: { 
+        phone: "+91 97654 32109", 
+        email: "arjun.rajput@sanskritiq.in" 
+      },
+      experience: "20+ years",
+      languages: ["Hindi", "Rajasthani", "English"],
+      genres: ["Kalbelia", "Ghoomar", "Chari", "Bhavai", "Teratali"],
+      achievements: ["Best Folk Performer - Rajasthan Heritage Festival 2019", "Cultural Ambassador - Rajasthan Tourism", "Featured in National Geographic"]
+    },
+    {
+      id: "5",
+      name: "Dr. Kavitha Krishnan",
+      specialty: "Mohiniyattam Classical Dance",
+      category: "dance",
+      location: "Kochi, Kerala",
+      rating: 4.9,
+      reviews: 78,
+      price: 28000,
+      priceUnit: "per_event",
+      availability: "busy",
+      tags: ["Mohiniyattam", "Kerala Classical", "Traditional Dance", "Cultural Education"],
+      image: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
       featured: true,
-      bio: "Contemporary artist blending traditional and modern performance styles."
+      bio: "PhD in Performing Arts from Kerala University. Leading exponent of Mohiniyattam with expertise in traditional Kerala art forms. Founder of Kerala Classical Dance Academy.",
+      contact: { 
+        phone: "+91 94876 54321", 
+        email: "kavitha.krishnan@sanskritiq.in",
+        website: "www.keralaclassicaldance.com"
+      },
+      experience: "22+ years",
+      languages: ["Malayalam", "English", "Hindi", "Sanskrit"],
+      genres: ["Mohiniyattam", "Bharatanatyam", "Kerala Folk", "Devotional Dance"],
+      achievements: ["Padma Shri Nominee 2021", "Kerala State Award 2018", "Founder - Kerala Dance Academy", "Author of 'Classical Dance Forms of Kerala'"]
     },
     {
       id: "6",
-      name: "Arjun Kapoor",
-      specialty: "Instrumental Music",
+      name: "Ustad Zakir Ahmed",
+      specialty: "Tabla & Percussion",
       category: "instrumental",
-      location: "Chennai, Tamil Nadu",
-      rating: 4.9,
-      reviews: 41,
-      price: 10000,
+      location: "Delhi, NCR",
+      rating: 4.8,
+      reviews: 142,
+      price: 22000,
       priceUnit: "per_event",
       availability: "available",
-      tags: ["Veena", "Flute", "Classical Instrumental"],
-      image: "/api/placeholder/150/150",
+      tags: ["Tabla", "Percussion", "Hindustani Classical", "Accompaniment"],
+      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
       featured: false,
-      bio: "Master of traditional Indian instruments with expertise in veena and flute."
+      bio: "Master tabla player from the Delhi Gharana. Son of legendary Ustad Ibrahim Ahmed, trained in traditional guru-shishya parampara. Expert in solo performances and accompaniment.",
+      contact: { 
+        phone: "+91 93456 78901", 
+        email: "zakir.ahmed@sanskritiq.in" 
+      },
+      experience: "16+ years",
+      languages: ["Hindi", "Urdu", "English"],
+      genres: ["Hindustani Classical", "Qawwali", "Fusion", "Devotional"],
+      achievements: ["Young Talent Award - Delhi Classical Music Festival 2019", "Best Accompanist - All India Classical Music Competition 2020", "Featured artist with Shankar Mahadevan"]
     }
   ];
 
@@ -235,7 +289,7 @@ const Artists = () => {
             priceUnit: "per_event",
             availability: artist.available ? "available" : "busy",
             tags: artist.specialization,
-            image: artist.profile_image || "/api/placeholder/150/150",
+            image: artist.profile_image || "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
             featured: artist.rating >= 4.8,
             bio: artist.bio,
             contact: { phone: artist.phone, email: artist.email }
@@ -347,22 +401,44 @@ const Artists = () => {
       <Header />
       <main>
         {/* Hero Section */}
-        <section className="relative py-20 px-4 bg-gradient-festival overflow-hidden">
+        <section className="relative py-20 px-4 overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0">
+            <img 
+              src="https://images.unsplash.com/photo-1534329539061-64caeb388c42?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+              alt="Indian cultural artists performing background"
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.src = "https://images.unsplash.com/photo-1594736797933-d0b22d09d3ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80";
+              }}
+            />
+          </div>
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 via-purple-900/70 to-pink-900/80"></div>
           <div className="absolute inset-0 bg-festival-pattern opacity-10"></div>
           <div className="container mx-auto text-center relative z-10">
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
               Discover Artists
             </h1>
-            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-white/95 mb-8 max-w-2xl mx-auto drop-shadow-md">
               Connect with talented performers who bring authentic Indian culture to life
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-              <Button size="lg" variant="secondary" asChild>
+              <Button 
+                size="lg" 
+                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-2 border-white/20 shadow-lg ring-2 ring-white/30 backdrop-blur-sm font-semibold"
+                asChild
+              >
                 <Link to="/join-artist">
                   Join as Artist
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-primary" asChild>
+              <Button 
+                size="lg" 
+                className="text-white border-2 border-white bg-white/10 hover:bg-white hover:text-black backdrop-blur-sm shadow-lg ring-2 ring-white/20 font-semibold" 
+                asChild
+              >
                 <Link to="/about">
                   How It Works
                 </Link>

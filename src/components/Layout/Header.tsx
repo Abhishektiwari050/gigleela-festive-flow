@@ -237,8 +237,10 @@ const Header = ({ isHeroInView = false }: { isHeroInView?: boolean }) => {
                     variant="outline" 
                     size="sm" 
                     className={cn(
-                      "hidden sm:flex festival-glow hover:scale-105 transition-all",
-                      isHeroInView ? "text-white border-white/30 hover:bg-white/10" : "border-border"
+                      "hidden sm:flex festival-glow hover:scale-105 transition-all font-semibold",
+                      isHeroInView 
+                        ? "text-white border-white/60 bg-white/10 hover:bg-white/20 hover:border-white shadow-lg backdrop-blur-sm" 
+                        : "border-primary/30 bg-primary/5 hover:bg-primary/10 text-primary hover:border-primary"
                     )}
                   >
                     Join Now
@@ -267,8 +269,10 @@ const Header = ({ isHeroInView = false }: { isHeroInView?: boolean }) => {
                 variant="festival" 
                 size="sm" 
                 className={cn(
-                  "hidden sm:flex hover:shadow-glow transition-all",
-                  isHeroInView ? "bg-white text-purple-600 hover:bg-white/90" : ""
+                  "hidden sm:flex hover:shadow-glow transition-all font-semibold",
+                  isHeroInView 
+                    ? "bg-white text-purple-600 hover:bg-white/90 shadow-lg" 
+                    : "bg-gradient-festival text-white hover:bg-gradient-festival/90"
                 )}
                 onClick={() => navigate('/signin')}
               >
@@ -285,7 +289,7 @@ const Header = ({ isHeroInView = false }: { isHeroInView?: boolean }) => {
                   className="hidden sm:flex items-center space-x-2 hover:bg-primary/10"
                 >
                   <Avatar className="h-6 w-6">
-                    <AvatarImage src={user.profileImage} />
+                    <AvatarImage src={user.profileImage || `https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80`} />
                     <AvatarFallback className="text-xs">
                       {getUserInitials(user.name)}
                     </AvatarFallback>

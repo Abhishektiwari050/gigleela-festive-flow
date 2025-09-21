@@ -31,22 +31,22 @@ const About = () => {
 
   const team = [
     {
-      name: "Priya Sharma",
+      name: "Ravi Choubey",
       role: "Founder & CEO",
-      background: "Former cultural event manager with 15+ years experience",
-      image: "/placeholder.svg"
+      background: "Visionary leader with deep passion for preserving Indian cultural heritage and 12+ years in event management",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
     },
     {
-      name: "Rajesh Kumar",
-      role: "Head of Artist Relations",
-      background: "Classical musician and cultural consultant",
-      image: "/placeholder.svg"
+      name: "Abhishek Tiwari",
+      role: "Creative Director & Artist Relations",
+      background: "Accomplished classical artist and cultural consultant with expertise in traditional Indian performing arts",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
     },
     {
-      name: "Anita Verma",
-      role: "Technology Director",
-      background: "Tech entrepreneur passionate about cultural preservation",
-      image: "/placeholder.svg"
+      name: "Vinay Dubey",
+      role: "Operations Director",
+      background: "Strategic operations expert ensuring seamless delivery of cultural experiences and artist management",
+      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
     }
   ];
 
@@ -62,14 +62,28 @@ const About = () => {
       <Header />
       <main>
         {/* Hero Section */}
-        <section className="relative py-20 px-4 bg-gradient-festival overflow-hidden">
+        <section className="relative py-20 px-4 overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0">
+            <img 
+              src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+              alt="Traditional Indian architecture and heritage background"
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.src = "https://images.unsplash.com/photo-1517164850305-99a3e65bb47e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80";
+              }}
+            />
+          </div>
+          {/* Enhanced Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-amber-900/80 via-orange-900/70 to-red-900/80"></div>
           <div className="absolute inset-0 bg-festival-pattern opacity-10"></div>
           <div className="container mx-auto text-center relative z-10">
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
               About Sanskritiq
             </h1>
-            <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
-              We're on a mission to preserve, promote, and celebrate India's rich cultural heritage by connecting authentic artists with audiences who value tradition.
+            <p className="text-xl text-white/95 mb-8 max-w-3xl mx-auto drop-shadow-md leading-relaxed">
+              Founded by visionary leaders Ravi Choubey, Abhishek Tiwari, and Vinay Dubey, we're dedicated to preserving, promoting, and celebrating India's magnificent cultural heritage by connecting authentic artists with audiences who cherish tradition.
             </p>
           </div>
         </section>
@@ -82,13 +96,13 @@ const About = () => {
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Story</h2>
                 <div className="space-y-4 text-muted-foreground">
                   <p>
-                    Sanskritiq was born from a simple yet powerful observation: while India's cultural heritage is incredibly rich and diverse, many talented traditional artists struggle to find platforms to showcase their skills, and event organizers often struggle to find authentic cultural performers.
+                    Sanskritiq was founded by three passionate individuals - Ravi Choubey, Abhishek Tiwari, and Vinay Dubey - who shared a common vision: to create a bridge between India's rich cultural heritage and the modern world. Their combined expertise in event management, traditional arts, and operations created the perfect foundation for this revolutionary platform.
                   </p>
                   <p>
-                    Founded in 2024, we bridge this gap by creating a digital marketplace that celebrates and preserves our cultural traditions while providing sustainable opportunities for artists and memorable experiences for audiences.
+                    Recognizing that many talented traditional artists struggled to find platforms to showcase their skills while event organizers often struggled to find authentic cultural performers, the founders established Sanskritiq in 2024 as a comprehensive solution to this cultural gap.
                   </p>
                   <p>
-                    Today, we're proud to be India's leading platform for authentic cultural performances, connecting heritage with modern celebration.
+                    Today, under their leadership, Sanskritiq has grown to become India's most trusted platform for authentic cultural performances, connecting heritage with modern celebration while ensuring artists receive the recognition and compensation they deserve.
                   </p>
                 </div>
                 <Button size="lg" className="mt-6">
@@ -196,16 +210,29 @@ const About = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {team.map((member, index) => (
-                <Card key={index} className="text-center hover:shadow-elegant transition-shadow duration-300">
+                <Card key={index} className="text-center hover:shadow-elegant transition-shadow duration-300 group">
                   <CardContent className="p-8">
-                    <div className="w-24 h-24 bg-gradient-festival rounded-full flex items-center justify-center mx-auto mb-6">
-                      <span className="text-white font-bold text-2xl">
-                        {member.name.split(' ').map(n => n[0]).join('')}
-                      </span>
+                    <div className="w-32 h-32 mx-auto mb-6 overflow-hidden rounded-full border-4 border-primary/20 group-hover:border-primary/40 transition-all duration-300">
+                      <img 
+                        src={member.image} 
+                        alt={member.name}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.style.display = 'none';
+                          target.parentElement!.innerHTML = `
+                            <div class="w-full h-full bg-gradient-festival rounded-full flex items-center justify-center">
+                              <span class="text-white font-bold text-2xl">
+                                ${member.name.split(' ').map(n => n[0]).join('')}
+                              </span>
+                            </div>
+                          `;
+                        }}
+                      />
                     </div>
                     <h3 className="text-xl font-semibold mb-2">{member.name}</h3>
                     <Badge variant="outline" className="mb-4">{member.role}</Badge>
-                    <p className="text-muted-foreground text-sm">{member.background}</p>
+                    <p className="text-muted-foreground text-sm leading-relaxed">{member.background}</p>
                   </CardContent>
                 </Card>
               ))}

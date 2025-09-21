@@ -79,17 +79,35 @@ const Services = () => {
       <Header />
       <main>
         {/* Hero Section */}
-        <section className="relative py-20 px-4 bg-gradient-festival overflow-hidden">
+        <section className="relative py-20 px-4 overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0">
+            <img 
+              src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+              alt="Indian cultural performances background"
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.src = "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80";
+              }}
+            />
+          </div>
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-900/80 via-pink-900/70 to-orange-900/80"></div>
           <div className="absolute inset-0 bg-festival-pattern opacity-10"></div>
           <div className="container mx-auto text-center relative z-10">
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
               Our Services
             </h1>
-            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-white/95 mb-8 max-w-2xl mx-auto drop-shadow-md">
               Discover authentic cultural performances and services that bring heritage to life
             </p>
-            <Button size="lg" variant="secondary" className="animate-bounce" asChild>
-              <Link to="/services">
+            <Button 
+              size="lg" 
+              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-2 border-white/20 shadow-lg ring-2 ring-white/30 backdrop-blur-sm font-semibold"
+              asChild
+            >
+              <Link to="#services">
                 Explore All Services
               </Link>
             </Button>
@@ -97,8 +115,16 @@ const Services = () => {
         </section>
 
         {/* Services Grid */}
-        <section className="py-20 px-4">
-          <div className="container mx-auto">
+        <section id="services" className="py-20 px-4 relative overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0 opacity-5">
+            <img 
+              src="https://images.unsplash.com/photo-1517164850305-99a3e65bb47e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80"
+              alt="Indian cultural performance background"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="container mx-auto relative z-10">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Choose Your Perfect Service</h2>
               <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
