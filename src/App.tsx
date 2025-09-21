@@ -1,6 +1,7 @@
 import { Toaster } from "@/components/ui/toaster";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
+import { AuthProvider } from "@/contexts/AuthContext";
 import Index from "@/pages/Index";
 import About from "@/pages/About";
 import Artists from "@/pages/Artists";
@@ -13,6 +14,11 @@ import Favorites from "@/pages/Favorites";
 import JoinArtist from "@/pages/JoinArtist";
 import JoinClient from "@/pages/JoinClient";
 import Search from "@/pages/Search";
+import ArtistProfile from "@/pages/ArtistProfile";
+import UserProfile from "@/pages/UserProfile";
+import BookingPage from "@/pages/BookingPage";
+import Dashboard from "@/pages/Dashboard";
+import BackendStatus from "@/pages/BackendStatus";
 import PageTransition from "@/components/Layout/PageTransition";
 
 function AnimatedRoutes() {
@@ -31,6 +37,11 @@ function AnimatedRoutes() {
         <Route path="/join-artist" element={<PageTransition><JoinArtist /></PageTransition>} />
         <Route path="/join-client" element={<PageTransition><JoinClient /></PageTransition>} />
         <Route path="/search" element={<PageTransition><Search /></PageTransition>} />
+        <Route path="/artist/:id" element={<PageTransition><ArtistProfile /></PageTransition>} />
+        <Route path="/profile" element={<PageTransition><UserProfile /></PageTransition>} />
+        <Route path="/booking/:id" element={<PageTransition><BookingPage /></PageTransition>} />
+        <Route path="/dashboard" element={<PageTransition><Dashboard /></PageTransition>} />
+        <Route path="/backend-status" element={<PageTransition><BackendStatus /></PageTransition>} />
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
       </Routes>
     </AnimatePresence>
@@ -39,12 +50,12 @@ function AnimatedRoutes() {
 
 function App() {
   return (
-    <>
+    <AuthProvider>
       <Router>
         <AnimatedRoutes />
       </Router>
       <Toaster />
-    </>
+    </AuthProvider>
   );
 }
 

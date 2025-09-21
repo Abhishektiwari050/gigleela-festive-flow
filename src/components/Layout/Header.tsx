@@ -8,7 +8,10 @@ import {
   Users,
   UserPlus,
   Share2,
-  Bell
+  Bell,
+  User,
+  LogOut,
+  Settings
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import {
@@ -16,17 +19,21 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuSeparator
 } from "@/components/ui/dropdown-menu";
 import { useNavigate, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/contexts/AuthContext";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-const Header = () => {
+const Header = ({ isHeroInView = false }: { isHeroInView?: boolean }) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
+  const { user, isAuthenticated, logout, isLoading } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -73,6 +80,20 @@ const Header = () => {
     }
   };
 
+  const handleLogout = () => {
+    logout();
+    setIsMobileMenuOpen(false);
+  };
+
+  const getUserInitials = (name: string) => {
+    return name
+      .split(' ')
+      .map(word => word[0])
+      .join('')
+      .toUpperCase()
+      .slice(0, 2);
+  };
+
   const navItems = [
     { path: '/services', label: 'Services' },
     { path: '/artists', label: 'Artists' },
@@ -88,8 +109,11 @@ const Header = () => {
 
   return (
     <header className={cn(
-      "sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 transition-all duration-300",
-      hasScrolled ? "shadow-lg border-border/50" : "border-transparent"
+      "fixed top-0 z-50 w-full transition-all duration-500",
+      isHeroInView 
+        ? "bg-transparent border-transparent backdrop-blur-none text-white" 
+        : "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b text-foreground",
+      hasScrolled && !isHeroInView ? "shadow-lg border-border/50" : ""
     )}>
       <div className="container flex h-16 items-center justify-between">
         {/* Logo */}
@@ -113,10 +137,16 @@ const Header = () => {
               </svg>
             </div>
             <div>
-              <h1 className="text-xl font-bold text-festival-gradient bg-clip-text">
+              <h1 className={cn(
+                "text-xl font-bold bg-clip-text transition-colors",
+                isHeroInView ? "text-white" : "text-festival-gradient"
+              )}>
                 Sanskritiq
               </h1>
-              <p className="text-xs text-muted-foreground -mt-1">Connecting Heritage</p>
+              <p className={cn(
+                "text-xs -mt-1 transition-colors",
+                isHeroInView ? "text-white/80" : "text-muted-foreground"
+              )}>Connecting Heritage</p>
             </div>
           </div>
         </div>
@@ -128,10 +158,10 @@ const Header = () => {
               key={item.path}
               onClick={() => handleNavigation(item.path)}
               className={cn(
-                "text-foreground hover:text-primary transition-all duration-300 font-medium px-3 py-2 rounded-lg",
+                "transition-all duration-300 font-medium px-3 py-2 rounded-lg",
                 location.pathname === item.path 
-                  ? "text-primary bg-primary/10" 
-                  : "hover:bg-accent/50"
+                  ? (isHeroInView ? "text-white bg-white/20" : "text-primary bg-primary/10")
+                  : (isHeroInView ? "text-white/90 hover:text-white hover:bg-white/10" : "text-foreground hover:text-primary hover:bg-accent/50")
               )}
               aria-current={location.pathname === item.path ? "page" : undefined}
             >
@@ -146,86 +176,185 @@ const Header = () => {
           <Button 
             variant="ghost" 
             size="icon" 
-            className="hidden sm:flex hover:bg-primary/10"
+            className={cn(
+              "hidden sm:flex transition-colors",
+              isHeroInView ? "text-white hover:bg-white/10 hover:text-white" : "hover:bg-primary/10"
+            )}
             onClick={() => setIsSearchOpen(!isSearchOpen)}
           >
             <Search className="h-4 w-4" />
           </Button>
 
-          {/* Notifications */}
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            className="hidden sm:flex hover:bg-primary/10"
-            onClick={() => navigate('/notifications')}
-          >
-            <Bell className="h-4 w-4" />
-          </Button>
+          {isAuthenticated && (
+            <>
+              {/* Notifications */}
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className={cn(
+                  "hidden sm:flex transition-colors",
+                  isHeroInView ? "text-white hover:bg-white/10 hover:text-white" : "hover:bg-primary/10"
+                )}
+                onClick={() => navigate('/notifications')}
+              >
+                <Bell className="h-4 w-4" />
+              </Button>
+
+              {/* Favorites */}
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className={cn(
+                  "hidden sm:flex transition-colors",
+                  isHeroInView ? "text-white hover:bg-white/10 hover:text-white" : "hover:bg-primary/10"
+                )}
+                onClick={() => navigate('/favorites')}
+              >
+                <Heart className="h-4 w-4" />
+              </Button>
+            </>
+          )}
 
           {/* Share */}
           <Button 
             variant="ghost" 
             size="icon" 
-            className="hidden sm:flex hover:bg-primary/10"
+            className={cn(
+              "hidden sm:flex transition-colors",
+              isHeroInView ? "text-white hover:bg-white/10 hover:text-white" : "hover:bg-primary/10"
+            )}
             onClick={handleShare}
           >
             <Share2 className="h-4 w-4" />
           </Button>
-
-          {/* Favorites */}
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            className="hidden sm:flex hover:bg-primary/10"
-            onClick={() => navigate('/favorites')}
-          >
-            <Heart className="h-4 w-4" />
-          </Button>
           
-          {/* Join Dropdown */}
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button 
-                variant="outline" 
-                size="sm" 
-                className="hidden sm:flex festival-glow hover:scale-105"
-              >
-                Join Now
-                <ChevronDown className="h-4 w-4 ml-1" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-48">
-              <DropdownMenuItem 
-                className="cursor-pointer"
-                onClick={() => navigate('/join-artist')}
-              >
-                <UserPlus className="h-4 w-4 mr-2" />
-                Join as Artist
-              </DropdownMenuItem>
-              <DropdownMenuItem 
-                className="cursor-pointer"
-                onClick={() => navigate('/join-client')}
-              >
-                <Users className="h-4 w-4 mr-2" />
-                Join as Client
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          {!isAuthenticated && !isLoading && (
+            <>
+              {/* Join Dropdown */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    className={cn(
+                      "hidden sm:flex festival-glow hover:scale-105 transition-all",
+                      isHeroInView ? "text-white border-white/30 hover:bg-white/10" : "border-border"
+                    )}
+                  >
+                    Join Now
+                    <ChevronDown className="h-4 w-4 ml-1" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-48">
+                  <DropdownMenuItem 
+                    className="cursor-pointer"
+                    onClick={() => navigate('/join-artist')}
+                  >
+                    <UserPlus className="h-4 w-4 mr-2" />
+                    Join as Artist
+                  </DropdownMenuItem>
+                  <DropdownMenuItem 
+                    className="cursor-pointer"
+                    onClick={() => navigate('/join-client')}
+                  >
+                    <Users className="h-4 w-4 mr-2" />
+                    Join as Client
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
 
-          <Button 
-            variant="festival" 
-            size="sm" 
-            className="hidden sm:flex hover:shadow-glow"
-            onClick={() => navigate('/signin')}
-          >
-            Sign In
-          </Button>
+              <Button 
+                variant="festival" 
+                size="sm" 
+                className={cn(
+                  "hidden sm:flex hover:shadow-glow transition-all",
+                  isHeroInView ? "bg-white text-purple-600 hover:bg-white/90" : ""
+                )}
+                onClick={() => navigate('/signin')}
+              >
+                Sign In
+              </Button>
+            </>
+          )}
+
+          {isAuthenticated && user && (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button 
+                  variant="ghost" 
+                  className="hidden sm:flex items-center space-x-2 hover:bg-primary/10"
+                >
+                  <Avatar className="h-6 w-6">
+                    <AvatarImage src={user.profileImage} />
+                    <AvatarFallback className="text-xs">
+                      {getUserInitials(user.name)}
+                    </AvatarFallback>
+                  </Avatar>
+                  <span className="text-sm font-medium">{user.name}</span>
+                  <ChevronDown className="h-3 w-3" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56">
+                <div className="px-2 py-1.5 text-sm text-muted-foreground">
+                  {user.email}
+                </div>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem 
+                  className="cursor-pointer"
+                  onClick={() => navigate('/dashboard')}
+                >
+                  <Settings className="h-4 w-4 mr-2" />
+                  Dashboard
+                </DropdownMenuItem>
+                <DropdownMenuItem 
+                  className="cursor-pointer"
+                  onClick={() => navigate(`/profile`)}
+                >
+                  <User className="h-4 w-4 mr-2" />
+                  Profile
+                </DropdownMenuItem>
+                <DropdownMenuItem 
+                  className="cursor-pointer"
+                  onClick={() => navigate('/favorites')}
+                >
+                  <Heart className="h-4 w-4 mr-2" />
+                  Favorites
+                </DropdownMenuItem>
+                <DropdownMenuItem 
+                  className="cursor-pointer"
+                  onClick={() => navigate('/notifications')}
+                >
+                  <Bell className="h-4 w-4 mr-2" />
+                  Notifications
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem 
+                  className="cursor-pointer"
+                  onClick={() => navigate('/settings')}
+                >
+                  <Settings className="h-4 w-4 mr-2" />
+                  Settings
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem 
+                  className="cursor-pointer text-destructive focus:text-destructive"
+                  onClick={handleLogout}
+                >
+                  <LogOut className="h-4 w-4 mr-2" />
+                  Sign Out
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          )}
 
           {/* Mobile Menu Button */}
           <Button 
             variant="ghost" 
             size="icon" 
-            className="lg:hidden"
+            className={cn(
+              "lg:hidden transition-colors",
+              isHeroInView ? "text-white hover:bg-white/10 hover:text-white" : "hover:bg-accent hover:text-accent-foreground"
+            )}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}

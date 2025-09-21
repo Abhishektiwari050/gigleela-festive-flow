@@ -4,8 +4,25 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Music, Users, Camera, Mic, Palette, Trophy, Clock, MapPin } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 
 const Services = () => {
+  const navigate = useNavigate();
+  
+  const handleBookService = (serviceTitle: string) => {
+    // Navigate to artists page with the service category as filter
+    const categoryMap: { [key: string]: string } = {
+      "Classical & Folk Music": "music",
+      "Dance Performances": "dance",
+      "Cultural Events": "all",
+      "Wedding Entertainment": "music",
+      "Art & Craft Workshops": "all",
+      "Competition & Events": "all"
+    };
+    
+    const category = categoryMap[serviceTitle] || "all";
+    navigate(`/artists?category=${category}&service=${encodeURIComponent(serviceTitle)}`);
+  };
   const services = [
     {
       icon: Music,
@@ -71,8 +88,10 @@ const Services = () => {
             <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
               Discover authentic cultural performances and services that bring heritage to life
             </p>
-            <Button size="lg" variant="secondary" className="animate-bounce">
-              Explore All Services
+            <Button size="lg" variant="secondary" className="animate-bounce" asChild>
+              <Link to="/services">
+                Explore All Services
+              </Link>
             </Button>
           </div>
         </section>
@@ -118,7 +137,11 @@ const Services = () => {
                       </ul>
                       <div className="pt-4 border-t">
                         <p className="text-lg font-semibold text-primary mb-4">{service.price}</p>
-                        <Button className="w-full" variant="outline">
+                        <Button 
+                          className="w-full" 
+                          variant="outline"
+                          onClick={() => handleBookService(service.title)}
+                        >
                           Book Now
                         </Button>
                       </div>
@@ -174,11 +197,15 @@ const Services = () => {
               Connect with authentic artists and bring the richness of Indian culture to your next event
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="secondary">
-                Browse Artists
+              <Button size="lg" variant="secondary" asChild>
+                <Link to="/artists">
+                  Browse Artists
+                </Link>
               </Button>
-              <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-primary">
-                Contact Us
+              <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-primary" asChild>
+                <Link to="/contact">
+                  Contact Us
+                </Link>
               </Button>
             </div>
           </div>
